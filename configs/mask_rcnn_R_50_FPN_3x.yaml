@@ -1,0 +1,21 @@
+_BASE_: "./Base-RCNN-FPN.yaml"
+MODEL:
+  WEIGHTS: "detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl"  # initialize from model zoo
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 50
+  ROI_HEADS:
+    BATCH_SIZE_PER_IMAGE: 32
+    NUM_CLASSES: 6
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 20
+  IMS_PER_BATCH: 2
+  CHECKPOINT_PERIOD: 10
+DATASETS:
+  TRAIN: ("car_damage_train",)
+  TEST: ("car_damage_val",)
+DATALOADER:
+  NUM_WORKERS: 2
+INPUT:
+  MASK_FORMAT: "bitmask"

@@ -1,0 +1,18 @@
+trainingInput:
+        scaleTier: CUSTOM
+        masterType: n1-standard-4
+        masterConfig:
+                acceleratorConfig:
+                         count: 1
+                         type: NVIDIA_TESLA_T4
+                         #hyperparameters:
+                #enableTrialEarlyStopping: TRUE
+                #goal: MINIMIZE
+                #hyperparameterMetricTag: "my_loss"
+                #maxTrials: 1
+                #maxParallelTrials: 1
+                #params:
+                        #- parameterName: batchsize
+                  #type: INTEGER
+                  #minValue: 8
+                  #maxValue: 1024

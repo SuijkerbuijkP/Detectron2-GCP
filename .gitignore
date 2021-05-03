@@ -1,0 +1,12 @@
+.ipynb_checkpoints/*
+.idea
+data
+!/data/data_inspector.ipynb
+!/data/filter_annotations.py
+!/data/json_statistics.py
+!/data/prepare_ting_from_instance.py
+!/data/preprocess.py
+trainer/model_output
+trainer/exporter
+*.pth
+*.jit

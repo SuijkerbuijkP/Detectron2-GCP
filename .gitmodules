@@ -1,0 +1,9 @@
+[submodule "AdelaiDet"]
+	path = AdelaiDet
+	url = https://github.com/aim-uofa/AdelaiDet.git
+[submodule "detectron2"]
+	path = detectron2
+	url = https://github.com/facebookresearch/detectron2.git
+[submodule "d2go"]
+	path = d2go
+	url = https://github.com/facebookresearch/d2go.git

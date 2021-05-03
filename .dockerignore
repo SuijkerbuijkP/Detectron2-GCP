@@ -1,0 +1,20 @@
+.git
+.idea
+.ipynv_checkpoints
+AdelaiDet
+detectron2
+test
+trainer
+data
+
+# do not exclude trainer required files
+! trainer/run.py
+! trainer/custom_methods
+! trainer/custom_trainers
+! trainer/d2go_run.py
+
+# do not exclude the preprocessing files
+! data/__init__.py
+! data/preprocess.py
+! data/prepare_thing_sem_from_instance.py
+! data/filter_annotations.py
