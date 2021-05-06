@@ -62,19 +62,19 @@ def setup(args):
     # checks what type of run is required and loads/sets variables accordingly
     if args.eval_only:
         if args.checkpoint == "" or args.eval_name == "":
-            raise Exception("No checkpoint or previous run provided, please set with --eval-run and --checkpoint.")
+            raise Exception("No checkpoint or previous run provided, please set with --eval-name and --checkpoint.")
         cfg.OUTPUT_DIR = "model_output/" + args.eval_name
     elif args.resume:
         if args.checkpoint == "":
-            raise Exception("No checkpoint provided, please set with --eval-run and --checkpoint.")
+            raise Exception("No checkpoint provided, please set with --eval-name and --checkpoint.")
         # loads checkpoint from which we continue, to be set with args.checkpoint
-        cfg.OUTPUT_DIR = "model_output/" + args.run_name
+        cfg.OUTPUT_DIR = "model_output/" + args.eval_name
         load_checkpoint(cfg, args)
     elif args.reuse_weights == "True":
         if args.checkpoint == "":
-            raise Exception("No checkpoint provided, please set with --eval-run and --checkpoint.")
+            raise Exception("No checkpoint provided, please set with --eval-name and --checkpoint.")
         # load model weights from defined run
-        cfg.OUTPUT_DIR = "model_output/" + args.run_name
+        cfg.OUTPUT_DIR = "model_output/" + args.eval_name
         checkpoint_iteration, bucket = load_checkpoint(cfg, args)
         cfg.MODEL.WEIGHTS = os.path.join(cfg.OUTPUT_DIR, "model_" + checkpoint_iteration + ".pth")
         # if hyperparameter tuning is done, the name does need to be checked and set to new output folder
@@ -152,7 +152,7 @@ if __name__ == "__main__":
         main(args)
     else:
         launch(
-            main(args),
+            main,
             args.num_gpus,
             dist_url="auto",
             args=(args,),
